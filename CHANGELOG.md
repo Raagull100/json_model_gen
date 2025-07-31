@@ -4,3 +4,5 @@
 - format code
 ## 0.0.3
 - documentation commands
+## 0.0.4
+- formatted
