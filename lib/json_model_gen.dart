@@ -1,8 +1,8 @@
 /// A Dart library for generating Dart model classes from JSON data.
-/// 
+///
 /// This library provides functionality to automatically create Dart classes
 /// with proper serialization/deserialization methods based on JSON structure.
-/// 
+///
 /// The generated classes include:
 /// - Constructor with required parameters
 /// - `fromJson` factory method for deserialization
