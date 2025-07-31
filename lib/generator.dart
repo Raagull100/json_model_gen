@@ -1,6 +1,7 @@
 import 'package:recase/recase.dart';
 
-String generateDartModel(Map<String, dynamic> json, {required String className}) {
+String generateDartModel(Map<String, dynamic> json,
+    {required String className}) {
   final buffer = StringBuffer();
   buffer.writeln('class $className {');
 
@@ -18,7 +19,8 @@ String generateDartModel(Map<String, dynamic> json, {required String className})
   buffer.writeln('});');
 
   // fromJson
-  buffer.writeln('\n  factory $className.fromJson(Map<String, dynamic> json) => $className(');
+  buffer.writeln(
+      '\n  factory $className.fromJson(Map<String, dynamic> json) => $className(');
   json.forEach((key, value) {
     final type = _getDartType(value);
     buffer.writeln("    ${key.camelCase}: json['$key'] as $type,");
@@ -40,7 +42,8 @@ String generateDartModel(Map<String, dynamic> json, {required String className})
   });
   buffer.writeln('  }) => $className(');
   json.forEach((key, _) {
-    buffer.writeln("    ${key.camelCase}: ${key.camelCase} ?? this.${key.camelCase},");
+    buffer.writeln(
+        "    ${key.camelCase}: ${key.camelCase} ?? this.${key.camelCase},");
   });
   buffer.writeln('  );');
 
