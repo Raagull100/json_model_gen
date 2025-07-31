@@ -1,0 +1,19 @@
+name: json_model_gen
+description: >-
+  A Dart tool to generate model classes from JSON with fromJson, toJson, copyWith,
+  and equality overrides.
+version: 0.0.1
+homepage: https://github.com/raagull/json_model_gen
+repository: https://github.com/raagull/json_model_gen
+
+environment:
+  sdk: '>=2.18.0 <4.0.0'
+
+dependencies:
+  recase: ^4.1.0
+
+executables:
+  json_model_gen:
+
+dev_dependencies:
+  test: ^1.25.2
