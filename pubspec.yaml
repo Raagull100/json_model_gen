@@ -6,6 +6,13 @@ version: 0.0.1
 homepage: https://github.com/raagull/json_model_gen
 repository: https://github.com/raagull/json_model_gen
 
+topics:
+  - json
+  - model
+  - codegen
+  - dart
+  - cli
+
 environment:
   sdk: '>=2.18.0 <4.0.0'
 
