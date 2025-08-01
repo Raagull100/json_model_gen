@@ -1,139 +1,93 @@
-# 🧬 json_model_gen
+🧬 json_model_gen
 
-[![pub version](https://img.shields.io/pub/v/json_model_gen.svg)](https://pub.dev/packages/json_model_gen)
-[![likes](https://badges.bar/json_model_gen/likes)](https://pub.dev/packages/json_model_gen/score)
-[![popularity](https://badges.bar/json_model_gen/popularity)](https://pub.dev/packages/json_model_gen/score)
+Generate Dart model classes effortlessly from raw JSON using this CLI tool.
 
-`json_model_gen` is a **Dart CLI tool** that helps you convert a raw JSON file into a clean, fully-functional Dart model class — complete with:
 
-- `fromJson` & `toJson`
-- `copyWith` method
-- `==` operator & `hashCode`
 
-Perfect for Flutter and Dart developers who want fast, consistent, and maintainable model classes.
+✨ Features
 
----
+🔄 Converts JSON into Dart classes
+❄️ Supports freezed annotation
+♻️ Supports equatable
+🔒 Optional field nullability
+💬 Interactive prompts (if no flags provided)
+🛑 Prevents accidental overwrites
+📁 Auto-renames .json → .dart when needed
 
-## 🚀 Installation
 
-To install this CLI tool globally:
 
-```bash
-dart pub global activate --source path .
-Make sure you're inside the package directory when running the command above.
-⚙️ How to Use
+🚀 Installation
 
-1️⃣ Prepare a JSON file
-Example: sample.json
+To install from pub.dev, run:
 
+dart pub add json_model_gen
+Or manually add it to your pubspec.yaml:
+
+dependencies:
+  json_model_gen: ^0.0.6
+Then run:
+
+dart pub get
+
+
+
+🔧 Usage
+
+📦 Full command with flags:
+dart run json_model_gen \
+  --input=raw.json \
+  --output=lib/user_model.dart \
+  --class=UserModel \
+  --freezed \
+  --equatable \
+  --nullable
+
+🧠 Or use interactive mode:
+Just run:
+
+dart run json_model_gen
+It will ask you step-by-step:
+
+📥 Input file path
+📤 Output file path
+🧪 Class name
+⚙️ Use equatable
+❄️ Use freezed
+❓ Make all fields nullable
+📌 Example
+
+Input (raw.json)
 {
   "id": 1,
-  "name": "Raagull",
-  "isActive": true,
-  "rating": 4.5
+  "name": "Alice",
+  "active": true,
+  "bio": null
 }
-Save it anywhere on your system.
+Output (user_model.dart)
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-2️⃣ Run the generator
-json_model_gen path/to/sample.json
-✅ This command will:
+part 'user_model.freezed.dart';
+part 'user_model.g.dart';
 
-Parse the JSON
-Generate a Dart model class
-Save it as root_model.dart in the same directory
-3️⃣ Output: What You Get
-root_model.dart will contain something like:
-
-class RootModel {
-  final int id;
-  final String name;
-  final bool isActive;
-  final double rating;
-
-  const RootModel({
-    required this.id,
-    required this.name,
-    required this.isActive,
-    required this.rating,
-  });
-
-  factory RootModel.fromJson(Map<String, dynamic> json) => RootModel(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    isActive: json['isActive'] as bool,
-    rating: json['rating'] as double,
-  );
-
-  Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'isActive': isActive,
-    'rating': rating,
-  };
-
-  RootModel copyWith({
+@freezed
+class UserModel with _$UserModel {
+  const factory UserModel({
     int? id,
     String? name,
-    bool? isActive,
-    double? rating,
-  }) => RootModel(
-    id: id ?? this.id,
-    name: name ?? this.name,
-    isActive: isActive ?? this.isActive,
-    rating: rating ?? this.rating,
-  );
+    bool? active,
+    String? bio,
+  }) = _UserModel;
 
-  @override
-  bool operator ==(Object other) =>
-    identical(this, other) ||
-    other is RootModel &&
-      runtimeType == other.runtimeType &&
-      id == other.id &&
-      name == other.name &&
-      isActive == other.isActive &&
-      rating == other.rating;
-
-  @override
-  int get hashCode =>
-    id.hashCode ^
-    name.hashCode ^
-    isActive.hashCode ^
-    rating.hashCode;
+  factory UserModel.fromJson(Map<String, dynamic> json) =>
+      _$UserModelFromJson(json);
 }
-🧪 Example: Using in Dart Code
-
-You can also use it programmatically:
-
-import 'package:json_model_gen/json_model_gen.dart';
-import 'dart:convert';
-
-void main() {
-  final jsonString = '{"id": 1, "name": "Raagull", "isActive": true}';
-  final jsonMap = jsonDecode(jsonString);
-
-  final classCode = generateDartModel(jsonMap, className: 'User');
-  print(classCode);
-}
-📦 Features
-
-✅ Clean & readable Dart code
-✅ Handles primitive types: int, double, bool, String
-✅ Constructor, fromJson, toJson, copyWith
-✅ Value equality support (==, hashCode)
 
 
-📄 License
+⚠️ Notes
 
-This project is licensed under the MIT License.
+✅ Input file must contain ONLY valid JSON, not Dart code.
+📄 If your input file ends with .dart, it will still work, but a warning will appear.
+🧪 Class names are validated to be in PascalCase.
+📌 --output=model.json will auto-convert to model.dart.
 
-You can use, copy, modify, and distribute this software freely — just give credit and don’t blame the author if something breaks.
-🙌 Author
-
-Made with ❤️ by Raagull Sakthivel
-
-✨ Contributions
-
-Feel free to fork, contribute, or suggest ideas via GitHub Issues!
-
-
-Let me know if you want this published as a public GitHub repo or want a GitHub Actions workflow to auto-release it to pub.dev on each new version.
+⭐ Star the repo on GitHub if you like it!

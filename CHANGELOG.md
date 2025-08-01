@@ -22,3 +22,8 @@
   - Invalid JSON content
 - Clear warnings for `.dart` inputs that contain raw JSON.
 - Added file-level and function-level documentation comments.
+## 0.0.6
+- 📖 Added a clean and beginner-friendly `README.md`
+- 🛠 Included installation instructions using `dart pub add`
+- 🧪 Mentioned post-install steps for `freezed` support
+- 🧰 Improved package documentation for easier onboarding
