@@ -27,3 +27,5 @@
 - 🛠 Included installation instructions using `dart pub add`
 - 🧪 Mentioned post-install steps for `freezed` support
 - 🧰 Improved package documentation for easier onboarding
+## 0.0.7
+- Enhance README.md with improved structure and clarity

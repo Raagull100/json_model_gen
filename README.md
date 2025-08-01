@@ -1,39 +1,49 @@
-🧬 json_model_gen
+## 🧬 json\_model\_gen
 
-Generate Dart model classes effortlessly from raw JSON using this CLI tool.
+A sleek CLI tool to effortlessly generate Dart model classes from raw JSON.
 
+---
 
+## ✨ Features
 
-✨ Features
+- 🔄 Convert raw JSON to Dart model classes
+- ❄️ Supports `freezed` annotation
+- ♻️ Supports `equatable`
+- 🔒 Make all fields nullable (optional)
+- 💬 Interactive prompts (if flags aren't provided)
+- 🛑 Overwrite protection with confirmation
+- 📁 Auto-renames `.json` → `.dart` when needed
 
-🔄 Converts JSON into Dart classes
-❄️ Supports freezed annotation
-♻️ Supports equatable
-🔒 Optional field nullability
-💬 Interactive prompts (if no flags provided)
-🛑 Prevents accidental overwrites
-📁 Auto-renames .json → .dart when needed
+---
 
+## 🚀 Installation
 
+From [pub.dev](https://pub.dev/packages/json_model_gen):
 
-🚀 Installation
-
-To install from pub.dev, run:
-
+```bash
 dart pub add json_model_gen
-Or manually add it to your pubspec.yaml:
+```
 
+Or manually add to your `pubspec.yaml`:
+
+```yaml
 dependencies:
   json_model_gen: ^0.0.6
-Then run:
+```
 
+Then:
+
+```bash
 dart pub get
+```
 
+---
 
+## 🔧 Usage
 
-🔧 Usage
+### ✅ Full command with all options:
 
-📦 Full command with flags:
+```bash
 dart run json_model_gen \
   --input=raw.json \
   --output=lib/user_model.dart \
@@ -41,29 +51,43 @@ dart run json_model_gen \
   --freezed \
   --equatable \
   --nullable
+```
 
-🧠 Or use interactive mode:
-Just run:
+### 🧠 Interactive mode:
 
+If you omit the flags:
+
+```bash
 dart run json_model_gen
-It will ask you step-by-step:
+```
 
-📥 Input file path
-📤 Output file path
-🧪 Class name
-⚙️ Use equatable
-❄️ Use freezed
-❓ Make all fields nullable
-📌 Example
+You’ll be guided step-by-step to:
 
-Input (raw.json)
+- 📅 Enter input file path
+- 📄 Enter output file path
+- 🧪 Enter class name
+- ⚙️ Use `equatable`?
+- ❄️ Use `freezed`?
+- ❓ Make all fields nullable?
+
+---
+
+## 📌 Example
+
+### Input (`raw.json`)
+
+```json
 {
   "id": 1,
   "name": "Alice",
   "active": true,
   "bio": null
 }
-Output (user_model.dart)
+```
+
+### Output (`user_model.dart`)
+
+```dart
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';
@@ -81,13 +105,18 @@ class UserModel with _$UserModel {
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);
 }
+```
 
+---
 
-⚠️ Notes
+## ⚠️ Notes
 
-✅ Input file must contain ONLY valid JSON, not Dart code.
-📄 If your input file ends with .dart, it will still work, but a warning will appear.
-🧪 Class names are validated to be in PascalCase.
-📌 --output=model.json will auto-convert to model.dart.
+- ✅ Input must be **raw JSON only** (not Dart code).
+- 📄 If the input is a `.dart` file, you'll receive a warning.
+- 💳 Class names are validated to ensure PascalCase formatting.
+- 📌 Output paths ending in `.json` will be renamed to `.dart` automatically.
 
-⭐ Star the repo on GitHub if you like it!
+---
+
+️⭐ Star the [GitHub repo](https://github.com/Raagull100/json_model_gen) if this helps you!
+
