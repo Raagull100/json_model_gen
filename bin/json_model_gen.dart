@@ -1,6 +1,5 @@
 // CLI entry point for the `json_model_gen` package.
 
-
 import 'dart:convert';
 import 'dart:io';
 
