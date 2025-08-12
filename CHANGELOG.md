@@ -29,3 +29,5 @@
 - 🧰 Improved package documentation for easier onboarding
 ## 0.0.7
 - Enhance README.md with improved structure and clarity
+## 0.0.8
+- Changed proper github repo link

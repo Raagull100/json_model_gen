@@ -1,13 +1,5 @@
-/// CLI entry point for the `json_model_gen` package.
-///
-/// This tool reads raw JSON from a file, generates a Dart model class from it,
-/// and writes the result to an output Dart file. It supports options like using
-/// `equatable`, `freezed`, and making fields nullable.
-///
-/// Usage:
-/// ```bash
-/// dart run json_model_gen --input=input.json --output=output.dart --class=MyModel
-/// ```
+// CLI entry point for the `json_model_gen` package.
+
 
 import 'dart:convert';
 import 'dart:io';
